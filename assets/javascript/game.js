@@ -1,12 +1,16 @@
 
 
+//array of what computer will generate and array of user option 
 
-
-  var wordchoice=["Gollum", "Gandalf", "Hobbiton", "Edoras"];
+var wordchoice=["Gollum", "Gandalf", "Hobbiton", "Edoras"];
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
+ var wins = 0;
+      var losses = 0;
+      var LifeLeft = 6;
+      var guesses=[];// usesr guess will be push up to this array
 
 
 document.getElementById("random-button").addEventListener("click", randomwordchoice);
@@ -14,15 +18,44 @@ document.getElementById("random-button").addEventListener("click", randomwordcho
 function randomwordchoice() {
    
         var computerWord = wordchoice[Math.floor(Math.random() * wordchoice.length)];
-        var targetDiv = document.getElementById("wordholder");
-          targetDiv.innerHTML = computerWord;
+        
+        var displayWord="_ ".repeat(computerWord.length);
+  
+     
 
+        var targetDiv = document.getElementById("wordholder");
+          targetDiv.innerHTML = displayWord;
+
+         
+          
 
        
        
 }
 
+randomwordchoice();
 
+//button function to create button
+ var buttons = function () {
+    letterButton = document.getElementById("userButton");// go to id=userButton
+    letter = document.createElement('ul');// then create ul
+
+    for (var i = 0; i < alphabet.length; i++) { //loop all the letter
+      letter.id = 'alphabet';//assign id to new <ul>
+      list = document.createElement('li'); //create li
+      list.id = 'letter'//assign id to list
+      list.innerHTML = alphabet[i];  // will list alla teh alphabet in the array
+      letterButton.appendChild(letter);// put letter inside of parent div letterbutton
+      letter.appendChild(list);  //put list inside of parent letter
+
+
+    }
+  }
+buttons();
+
+
+
+// check if user guess is in the index and find the index and then replace .. string. index of (user.guess )
 
 /*getElementById("random-button").on
 
